@@ -3,13 +3,14 @@
 namespace Database\Factories;
 
 use App\Models\Dosen;
+use App\Models\Reservasi;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Reservasi>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Riwayat>
  */
-class ReservasiFactory extends Factory
+class RiwayatFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,15 +19,14 @@ class ReservasiFactory extends Factory
      */
     public function definition()
     {
+        $reservasi = Reservasi::where('selesai', true) -> get() -> random();
+
         return [
-            'id_mahasiswa' => User::all()->random()->id,
+            'id_reservasi' => $reservasi -> id,
             'id_dosen' => Dosen::all()->random()->id,
-            'nama_awal' => $this->faker->firstName,
-            'nama_tengah' => $this->faker->firstName,
-            'nama_akhir' => $this->faker->lastName,
+            'nama_riwayat' => "Riwayat untuk " . $reservasi -> nama_awal,
             'tanggal' => $this->faker->date('m/d/Y'),
             'pesan' => $this->faker->realText(150),
-            'selesai' => (bool) random_int(0, 1),
         ];
     }
 }

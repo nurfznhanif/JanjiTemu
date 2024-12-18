@@ -1,8 +1,8 @@
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+            <a href="#">
+                <img src="{{ asset('assets/img/Logo.png') }}" alt="Logo" class="w-20 h-20">
             </a>
         </x-slot>
 
@@ -38,8 +38,8 @@
                 <x-label for="role_id" :value="__('Login Sebagai')" />
                 <select name="role_id" onchange="onChangeSelectRole(this)"
                 class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full">
-                    <option value="{{ route('login') }}">Pasien</option>
-                    <option value="{{ route('dokter.login') }}">Dokter</option>
+                    <option value="{{ route('login') }}">Mahasiswa</option>
+                    <option value="{{ route('dosen.login') }}">Dosen</option>
                 </select>
             </div>
 
@@ -57,8 +57,8 @@
                 </x-button>
 
                 @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('register')}}">
-                        {{ __('Belum memiliki akun?')}}
+                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">
+                        {{ __('Belum memiliki akun?') }}
                     </a>
                 @endif
             </div>

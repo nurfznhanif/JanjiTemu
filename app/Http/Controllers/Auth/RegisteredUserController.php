@@ -39,14 +39,16 @@ class RegisteredUserController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'gender' => ['required', Rule::in(['L', 'P'])],
-            'usia' => ['required', 'numeric', 'min:0'],
+            'jurusan' => ['required', 'string', 'max:255'], // Wajib diisi
+            'no_hp' => ['required', 'digits_between:10,13', 'unique:users'], // Wajib diisi
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'gender' => $request->gender,
-            'usia' => $request->usia,
+            'jurusan' => $request->jurusan,
+            'no_hp' => $request->no_hp, // Tambahkan kolom no_hp
             'password' => Hash::make($request->password),
         ]);
 

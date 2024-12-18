@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\DokterController;
-use App\Http\Controllers\ResepController;
+use App\Http\Controllers\DosenController;
+use App\Http\Controllers\RiwayatController;
 use App\Http\Controllers\ReservasiController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,45 +21,53 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('pasien.dashboard')->with('user_type', 'pasien');
+    return view('mahasiswa.dashboard')->with('user_type', 'mahasiswa');
 })->middleware(['web'])->name('dashboard');
 
-Route::middleware('dokter')->prefix('dokter')->group(function () {
+Route::get('dosen/login', function () {
+    return view('auth.login');
+})->name('dosen.login');
+
+Route::get('dosen/register', function () {
+    return view('auth.register');
+})->name('dosen.register');
+
+Route::middleware('dosen')->prefix('dosen')->group(function () {
     Route::get('dashboard', function () {
-        return view('dokter.dashboard')->with('user_type', 'dokter');
-    })->name('dokter.dashboard');
+        return view('dosen.dashboard')->with('user_type', 'dosen');
+    })->name('dosen.dashboard');
 
-    Route::get('reservasi', [ReservasiController::class, 'indexDokter'])
-        ->name('reservasi.dokter.index');
+    Route::get('reservasi', [ReservasiController::class, 'indexDosen'])
+        ->name('reservasi.dosen.index');
 
-    Route::get('reservasi/{reservasi_id}', [ReservasiController::class, 'detailReservasiDokter'])
-        ->name('reservasi.detail.dokter');
+    Route::get('reservasi/{reservasi_id}', [ReservasiController::class, 'detailReservasiDosen'])
+        ->name('reservasi.detail.dosen');
 
     Route::post('reservasi/{reservasi_id}/complete', [ReservasiController::class, 'selesaiReservasi'])
-        ->name('reservasi.dokter.complete');
+        ->name('reservasi.dosen.complete');
 
-    Route::get('resep', [ResepController::class, 'index'])
-        ->name('resep.dokter.index');
+    Route::get('riwayat', [RiwayatController::class, 'index'])
+        ->name('riwayat.dosen.index');
 
-    Route::get('resep/create', [ResepController::class, 'showCompletedReservasi'])
-        ->name('resep.dokter.index.finished');
+    Route::get('riwayat/create', [RiwayatController::class, 'showCompletedReservasi'])
+        ->name('riwayat.dosen.index.finished');
 
-    Route::get('resep/create/{reservasi_id}', [ResepController::class, 'create'])
-        ->name('resep.dokter.create');
+    Route::get('riwayat/create/{reservasi_id}', [RiwayatController::class, 'create'])
+        ->name('riwayat.dosen.create');
 
-    Route::post('resep/create/{reservasi_id}/save', [ResepController::class, 'store'])
-        ->name('resep.dokter.create.save');
+    Route::post('riwayat/create/{reservasi_id}/save', [RiwayatController::class, 'store'])
+        ->name('riwayat.dosen.create.save');
 
-    Route::get('resep/{resep_id}', [ResepController::class, 'show'])
-        ->name('resep.detail.dokter');
+    Route::get('riwayat/{riwayat_id}', [RiwayatController::class, 'show'])
+        ->name('riwayat.detail.dosen');
 
-    Route::post('resep/{resep_id}/update', [ResepController::class, 'update'])
-        ->name('resep.dokter.update');
+    Route::post('riwayat/{riwayat_id}/update', [RiwayatController::class, 'update'])
+        ->name('riwayat.dosen.update');
 
-    Route::post('dokter/logout', [DokterController::class, 'destroy'])
-        ->name('dokter.logout');
+    Route::post('dosen/logout', [DosenController::class, 'destroy'])
+        ->name('dosen.logout');
 });
 
-
+Route::get('riwayat', [RiwayatController::class, 'index'])->name('riwayat.index');
 
 require __DIR__ . '/auth.php';

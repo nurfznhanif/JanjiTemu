@@ -24,8 +24,8 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this -> call(DokterSeeder::class);
-        \App\Models\User::factory(10)->create();
-        Reservasi::factory(15)->create();
+        \App\Models\User::factory(5)->create();
+        Reservasi::factory(5)->create();
         $this -> call(ResepSeeder::class);
     }
 }

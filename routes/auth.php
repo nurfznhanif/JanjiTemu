@@ -2,14 +2,14 @@
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
-use App\Http\Controllers\DokterController;
+use App\Http\Controllers\DosenController; // Updated controller name
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
-use App\Http\Controllers\ResepController;
+use App\Http\Controllers\RiwayatController; // Updated controller name
 use App\Http\Controllers\ReservasiController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,11 +24,11 @@ Route::middleware('guest')->group(function () {
 
     Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
-    Route::post('login/dokter', [DokterController::class, 'login'])
-        ->name('dokter.login');
+    Route::post('login/dosen', [DosenController::class, 'login']) // Changed to dosen
+        ->name('dosen.login');
 
-    Route::post('register/dokter', [DokterController::class, 'register'])
-        ->name('dokter.register');
+    Route::post('register/dosen', [DosenController::class, 'register']) // Changed to dosen
+        ->name('dosen.register');
 
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
         ->name('password.request');
@@ -63,17 +63,17 @@ Route::middleware('auth')->group(function () {
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
 
-    Route::get('reservasi', [DokterController::class, 'index'])
+    Route::get('reservasi', [DosenController::class, 'index']) // Changed to dosen
         ->name('reservasi.index');
 
     Route::get('reservasi/list', [ReservasiController::class, 'listReservasi'])
         ->name('reservasi.list');
 
-    Route::get('reservasi/{id_dokter}', [ReservasiController::class, 'reservasiDokter'])
+    Route::get('reservasi/{id_dosen}', [ReservasiController::class, 'reservasiDosen']) // Changed to id_dosen
         ->name('reservasi');
 
-    Route::post('reservasi/{id_dokter}/create', [ReservasiController::class, 'createReservasi'])
-        ->name('reservasi.dokter');
+    Route::post('reservasi/{id_dosen}/create', [ReservasiController::class, 'createReservasi']) // Changed to id_dosen
+        ->name('reservasi.dosen');
 
     Route::get('reservasi/list/{id_reservasi}', [ReservasiController::class, 'detailReservasi'])
         ->name('reservasi.detail');
@@ -82,9 +82,9 @@ Route::middleware('auth')->group(function () {
 
     Route::post('reservasi/list/{id_reservasi}/delete', [ReservasiController::class, 'deleteReservasi']);
 
-    Route::get('resep', [ResepController::class, 'indexPasien'])
-        ->name('resep.index');
+    Route::get('riwayat', [RiwayatController::class, 'indexMahasiswa']) // Changed to riwayat
+        ->name('riwayat.index');
 
-    Route::get('resep/{id_resep}', [ResepController::class, 'showPasienResep'])
-        ->name('resep.detail');
+    Route::get('riwayat/{id_riwayat}', [RiwayatController::class, 'showMahasiswaRiwayat']) // Changed to riwayat
+        ->name('riwayat.detail');
 });

@@ -13,20 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('reservasis', function (Blueprint $table) {
+        Schema::create('riwayats', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_mahasiswa')->constrained('users')->onDelete('cascade');
+            $table->foreignId('id_reservasi')->constrained('reservasis')->onDelete('cascade')->unique();
             $table->foreignId('id_dosen')->constrained('dosens')->onDelete('cascade');
-            $table->string('nama_awal');
-            $table->string('nama_tengah')->nullable();
-            $table->string('nama_akhir');
+            $table->string('nama_riwayat');
             $table->string('tanggal');
             $table->string('pesan');
-            $table->boolean('selesai')->default(false);
             $table->timestamps();
-
-            // $table->foreign('id_mahasiswa')->references('id')->on('users')->onDelete('cascade');
-            // $table->foreign('id_dosen')->references('id')->on('dosens')->onDelete('cascade');
         });
     }
 
@@ -37,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reservasis');
+        Schema::dropIfExists('riwayats');
     }
 };
