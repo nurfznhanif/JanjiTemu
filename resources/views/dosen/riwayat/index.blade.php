@@ -46,10 +46,6 @@
                                                         class="mt-2 text-gray-500 capitalize dark:text-gray-300 group-hover:text-white">
                                                         {{ $riwayat->tanggal }} </p>
 
-                                                        <p
-                                            class="mt-4 text-gray-500 capitalize dark:text-gray-300 group-hover:text-white">
-                                            {{ $reservasi->Keperluan }}</p>
-
                                                 </div>
                                             </div>
 
