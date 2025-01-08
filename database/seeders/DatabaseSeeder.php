@@ -1,9 +1,6 @@
 <?php
 
 namespace Database\Seeders;
-
-use App\Models\Resep;
-use App\Models\Reservasi;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -16,16 +13,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
-
-        $this -> call(DokterSeeder::class);
-        \App\Models\User::factory(5)->create();
-        Reservasi::factory(5)->create();
-        $this -> call(ResepSeeder::class);
+        $this -> call(DosenSeeder::class);
+        $this -> call(UserSeeder::class);
     }
 }

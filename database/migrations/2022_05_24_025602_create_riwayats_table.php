@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_reservasi')->constrained('reservasis')->onDelete('cascade')->unique();
             $table->foreignId('id_dosen')->constrained('dosens')->onDelete('cascade');
-            $table->string('nama_riwayat');
             $table->string('tanggal');
             $table->string('pesan');
             $table->timestamps();

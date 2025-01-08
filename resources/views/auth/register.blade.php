@@ -1,9 +1,9 @@
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
-            <!-- <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a> -->
+            <a href="/">
+                <img src="{{ asset('assets/img/Logo_UIR-cdr.png') }}" alt="Logo" class="w-20 h-20">
+            </a>
         </x-slot>
 
         <!-- Validation Errors -->

@@ -15,8 +15,11 @@
                     <x-nav-link :href="route('dosen.dashboard')" :active="request()->routeIs('dosen.dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('jadwal.dosen.index')" :active="request()->routeIs('jadwal.dosen.index')">
+                        {{ __('Atur Jadwal') }}
+                    </x-nav-link>
                     <x-nav-link :href="route('reservasi.dosen.index')" :active="request()->routeIs('reservasi.dosen.index')">
-                        {{ __('Jadwal') }}
+                        {{ __('Reservasi') }}
                     </x-nav-link>
                     <x-nav-link :href="route('riwayat.dosen.index')" :active="request()->routeIs('riwayat.dosen.index')">
                         {{ __('Riwayat') }}
@@ -71,7 +74,10 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('reservasi.dosen.index')" :active="request()->routeIs('reservasi.dosen.index')">
-                {{ __('Jadwal') }}
+                {{ __('Atur Jadwal') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('reservasi.dosen.index')" :active="request()->routeIs('reservasi.dosen.index')">
+                {{ __('Reservasi') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('riwayat.dosen.index')" :active="request()->routeIs('riwayat.dosen.index')">
                 {{ __('Riwayat') }}
@@ -82,7 +88,7 @@
         <div class="pt-4 pb-1 border-t border-gray-200">
             <div class="px-4">
                 <div class="font-medium text-base text-gray-800">{{ Auth::guard('dosen')->user()->name }}</div>
-                <div class="font-medium text-sm text-gray-500">{{ Auth::guard('dosen')->user()->email }}</div>
+                <div the="font-medium text-sm text-gray-500">{{ Auth::guard('dosen')->user()->email }}</div
             </div>
             <div class="mt-3 space-y-1">
                 <!-- Authentication -->

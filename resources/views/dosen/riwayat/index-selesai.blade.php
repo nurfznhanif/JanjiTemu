@@ -36,12 +36,16 @@
                                                 <p
                                                     class="mt-2 text-gray-500 capitalize dark:text-gray-300 group-hover:text-white">
                                                     {{ $reservasi->tanggal }} </p>
+
+                                                    <p
+                                            class="mt-4 text-gray-500 capitalize dark:text-gray-300 group-hover:text-white">
+                                            {{ $reservasi->Keperluan }}</p>
                                             </div>
                                         </div>
 
-                                        <p
+                                        <!-- <p
                                             class="mt-4 text-gray-500 capitalize dark:text-gray-300 group-hover:text-white">
-                                            {{ $reservasi->pesan }}</p>
+                                            {{ $reservasi->pesan }}</p> -->
                                     </div>
                                 @endforeach
                             </div>

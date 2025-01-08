@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="copyright" content="MACode ID, https://macodeid.com/">
-    <title>Appointment Dosen - Sistem Janji Temu</title>
+    <title>Sistem Janji Temu</title>
 
     <link rel="stylesheet" href="../assets/css/maicons.css">
     <link rel="stylesheet" href="../assets/css/bootstrap.css">
@@ -52,7 +52,7 @@
         </nav>
     </header>
 
-    <div class="page-hero bg-image overlay-dark" style="background-image: url(../assets/img/bg_image_1.jpg);">
+    <div class="page-hero bg-image overlay-dark" style="background-image: url(../assets/img/bg_image_1.jpeg);">
         <div class="hero-section">
             <div class="container text-center wow zoomIn">
                 <!-- <span class="subhead">Mudah dan Cepat</span> -->

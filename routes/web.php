@@ -3,6 +3,9 @@
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\RiwayatController;
 use App\Http\Controllers\ReservasiController;
+use App\Http\Controllers\JadwalController;
+use App\Http\Controllers\TelegramController;
+use App\Http\Controllers\Auth\PasswordResetController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,6 +39,20 @@ Route::middleware('dosen')->prefix('dosen')->group(function () {
     Route::get('dashboard', function () {
         return view('dosen.dashboard')->with('user_type', 'dosen');
     })->name('dosen.dashboard');
+
+    Route::get('jadwal', [JadwalController::class, 'index'])
+        ->name('jadwal.dosen.index');
+    Route::get('jadwal/create', [JadwalController::class, 'create'])
+        ->name('jadwal.dosen.create');
+    Route::post('jadwal', [JadwalController::class, 'store']) // Make sure this line is correct
+        ->name('jadwal.dosen.store');
+        Route::delete('jadwal/{jadwal}', [JadwalController::class, 'destroy'])->name('jadwal.dosen.destroy');
+        Route::get('jadwal/{jadwal}/edit', [JadwalController::class, 'edit'])->name('jadwal.dosen.edit');
+        Route::put('jadwal/{jadwal}', [JadwalController::class, 'update'])->name('jadwal.dosen.update');
+
+
+        Route::get('reservasi/{id}/form', [ReservasiController::class, 'showReservasiForm'])->name('reservasi.form');
+        Route::post('reservasi/{id}', [ReservasiController::class, 'storeReservasi'])->name('reservasi.dosen');
 
     Route::get('reservasi', [ReservasiController::class, 'indexDosen'])
         ->name('reservasi.dosen.index');
@@ -71,3 +88,25 @@ Route::middleware('dosen')->prefix('dosen')->group(function () {
 Route::get('riwayat', [RiwayatController::class, 'index'])->name('riwayat.index');
 
 require __DIR__ . '/auth.php';
+
+// Tambahkan ini ke routes/web.php
+Route::post('/telegram/webhook', [TelegramController::class, 'handleWebhook']);
+
+Route::middleware('auth')->prefix('mahasiswa')->group(function () {
+    Route::get('reservasi/{dosen_id}', [ReservasiController::class, 'reservasiDosen'])->name('reservasi.form');
+    Route::post('reservasi/{dosen_id}/create', [ReservasiController::class, 'createReservasi'])->name('reservasi.create'); // Tambahkan ini
+    Route::get('reservasi/list', [ReservasiController::class, 'listReservasi'])->name('reservasi.list');
+    Route::get('reservasi/{id_reservasi}/detail', [ReservasiController::class, 'detailReservasi'])->name('reservasi.detail');
+    Route::post('reservasi/{id_reservasi}/update', [ReservasiController::class, 'updateReservasi'])->name('reservasi.update');
+    Route::post('reservasi/{id_reservasi}/delete', [ReservasiController::class, 'deleteReservasi'])->name('reservasi.delete');
+    Route::get('mahasiswa/reservasi/list', [ReservasiController::class, 'listReservasi'])->name('reservasi.list');
+    Route::get('/reservasi', [ReservasiController::class, 'listReservasi'])->name('mahasiswa.reservasi');
+    Route::post('reservasi/list/{id}/update', [ReservasiController::class, 'updateReservasi'])->name('reservasi.update');
+
+    // Menampilkan form reset password
+    Route::post('mahasiswa/password/reset', [PasswordResetController::class, 'resetPassword'])->name('password.update');
+
+
+// Proses reset password
+Route::post('mahasiswa/password/reset', [PasswordResetController::class, 'resetPassword'])->name('password.update');
+});

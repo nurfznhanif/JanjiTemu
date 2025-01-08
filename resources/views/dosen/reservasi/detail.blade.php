@@ -17,10 +17,14 @@
                             <div class="px-4 py-5 bg-white sm:p-6">
                                 <div class="grid grid-cols-6 gap-6">
                                     <div class="col-span-6">
-                                        <p class="mt-1 text-lg text-gray-600">Nama Dosen:
-                                            {{ $reservasi->dosen_name }}</p>
+                                        <p class="mt-1 text-lg text-gray-600">Nama Mahasiswa: {{ $reservasi->mahasiswa->name }}</p>
+                                        <p
+                                        class="mt-4 text-gray-500 capitalize dark:text-gray-300 group-hover:text-white">
+                                        {{ $reservasi->Keperluan }}
+                                    </p>
                                     </div>
-                                    <div class="col-span-6 sm:col-span-2">
+
+                                    <!-- <div class="col-span-6 sm:col-span-2">
                                         <label for="first-name" class="block text-sm font-medium text-gray-700">Nama
                                             Awal</label>
                                         <input type="text" name="first_name" id="first-name" autocomplete="given-name"
@@ -45,7 +49,7 @@
                                             class="mt-1 focus:ring-[#00D9A5] focus:border-[#00D9A5] block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                                             value="{{ $reservasi->nama_akhir }}"
                                             readonly>
-                                    </div>
+                                    </div> -->
 
                                     <script src="https://unpkg.com/flowbite@1.4.6/dist/datepicker.js"></script>
 
@@ -62,16 +66,27 @@
                                             <input type="text" name="date"
                                                 id="date" autocomplete="off"
                                                 class="border border-gray-300 text-gray-900 sm:text-sm rounded-none rounded-r-md focus:ring-[#00D9A5] focus:border-[#00D9A5] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#00D9A5] dark:focus:border-[#00D9A5]"
-                                                value="{{ $reservasi->tanggal }}"
+                                                value="{{ $reservasi->jadwal->date ?? 'Tanggal tidak tersedia' }}"
                                                 readonly>
                                         </div>
                                     </div>
 
-                                    <div class="col-span-6">
-                                        <label for="pesan"
-                                            class="block text-sm font-medium text-gray-700">Keperluan</label>
-                                        <textarea readonly style="resize: none;" id="pesan" name="pesan" rows="4" class="block p-2.5 w-full rounded-md text-sm sm:text-sm text-gray-900 border border-gray-300 focus:ring-[#00D9A5] focus:border-[#00D9A5] dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#00D9A5]  dark:focus:border-[#00D9A5]"
-                                            placeholder="Masukkan keperluan...">{{ $reservasi->pesan }}</textarea>
+                                    <div class="col-span-6 sm:col-span-3">
+                                        <label for="time" class="block text-sm font-medium text-gray-700">Jam</label>
+                                        <div class="mt-1 flex rounded-md shadow-sm">
+                                            <svg class="w-11 h-11 inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm"
+                                                fill="currentColor" viewBox="0 0 20 20"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd"
+                                                    d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                                                    clip-rule="evenodd"></path>
+                                            </svg>
+                                            <input type="text" name="time"
+                                                id="time" autocomplete="off"
+                                                class="border border-gray-300 text-gray-900 sm:text-sm rounded-none rounded-r-md focus:ring-[#00D9A5] focus:border-[#00D9A5] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#00D9A5] dark:focus:border-[#00D9A5]"
+                                                value="{{ $reservasi->jadwal->time ?? 'Jam tidak tersedia' }}"
+                                                readonly>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

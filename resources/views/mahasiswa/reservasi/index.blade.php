@@ -44,7 +44,7 @@
                                             </a>
                                             <p
                                                 class="text-gray-500 capitalize dark:text-gray-300 group-hover:text-white">
-                                                {{ $dosen->lama_bekerja }} Tahun</p>
+                                                {{ $dosen->jurusan }}</p>
                                         </div>
                                     </div>
                                 @endforeach

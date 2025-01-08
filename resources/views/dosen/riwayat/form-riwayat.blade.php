@@ -16,10 +16,10 @@
                                     <h3 class="text-lg font-medium leading-6 text-gray-900">Data Riwayat</h3>
                                     <p class="mt-1 text-sm text-gray-600">Silahkan masukkan data riwayat yang akan
                                         diberikan ke Mahasiswa.</p>
-                                        <div class=" mt-6 px-4 py-3 bg-gray-50 sm:px-6">
+                                        <!-- <div class=" mt-6 px-4 py-3 bg-gray-50 sm:px-6">
                                             <p class="mt-1 text-md text-gray-900">Keperluan Mahasiswa:</p>
                                             <p class="mt-1 text-sm text-gray-600">{{ $reservasi -> pesan }}.</p>
-                                        </div>
+                                        </div> -->
                                 </div>
                             </div>
                             <div class="mt-5 md:mt-0 md:col-span-2">
@@ -36,14 +36,19 @@
                                                         {{ $reservasi->nama_awal . ' ' . $reservasi->nama_tengah . ' ' . $reservasi->nama_akhir }}</p>
                                                 </div>
 
-                                                <div class="col-span-6 sm:col-span-4">
+                                                <!-- <div class="col-span-6 sm:col-span-4">
                                                     <label for="nama_riwayat"
                                                         class="block text-sm font-medium text-gray-700">Nama
                                                         Bimbingan</label>
                                                     <input type="text" name="nama_riwayat" id="nama_riwayat"
                                                         placeholder="Masukkan nama bimbingan"
                                                         class="mt-1 focus:ring-[#00D9A5] focus:border-[#00D9A5] block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                                </div>
+                                                </div> -->
+
+                                                <div class=" mt-6 px-4 py-3 bg-gray-50 sm:px-6">
+                                            <p class="mt-1 text-md text-gray-900">Keperluan Mahasiswa:</p>
+                                            <p class="mt-1 text-sm text-gray-600">{{ $reservasi -> Keperluan }}.</p>
+                                        </div>
 
                                                 <div class="col-span-6">
                                                     <label for="pesan"

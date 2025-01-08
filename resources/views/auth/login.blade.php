@@ -1,8 +1,8 @@
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
-            <a href="#">
-                <img src="{{ asset('assets/img/Logo.png') }}" alt="Logo" class="w-20 h-20">
+            <a href="/">
+                <img src="{{ asset('assets/img/Logo_UIR-cdr.png') }}" alt="Logo" class="w-20 h-20">
             </a>
         </x-slot>
 
@@ -27,17 +27,17 @@
                 <x-label for="password" :value="__('Password')" />
 
                 <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                placeholder="Masukkan Password"
-                                required autocomplete="current-password" />
+                    type="password"
+                    name="password"
+                    placeholder="Masukkan Password"
+                    required autocomplete="current-password" />
             </div>
 
             <!-- Selecting Role -->
             <div class="mt-4">
                 <x-label for="role_id" :value="__('Login Sebagai')" />
                 <select name="role_id" onchange="onChangeSelectRole(this)"
-                class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full">
+                    class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full">
                     <option value="{{ route('login') }}">Mahasiswa</option>
                     <option value="{{ route('dosen.login') }}">Dosen</option>
                 </select>
@@ -57,9 +57,9 @@
                 </x-button>
 
                 @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">
-                        {{ __('Belum memiliki akun?') }}
-                    </a>
+                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">
+                    {{ __('Belum memiliki akun?') }}
+                </a>
                 @endif
             </div>
 
@@ -70,7 +70,7 @@
             </div>
 
             <script>
-                function onChangeSelectRole(selectObject){
+                function onChangeSelectRole(selectObject) {
                     var value = selectObject.value;
                     document.getElementById('form-login').action = value;
                 }

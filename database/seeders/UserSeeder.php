@@ -3,15 +3,15 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Dosen;
+use App\Models\User;
 
-class DosenSeeder extends Seeder
+class  UserSeeder extends Seeder
 {
     public function run()
     {
-        Dosen::create([
-            'name' => 'Nurfauzan Hanif, PhD',
-            'email' => 'nrfznhnf@gmail.com',
+        User::create([
+            'name' => 'Hahaha',
+            'email' => 'hahaha@gmail.com',
             'email_verified_at' => now(),
             'password' => bcrypt('password'),
             'gender' => 'L',

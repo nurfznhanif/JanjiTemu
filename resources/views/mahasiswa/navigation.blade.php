@@ -41,19 +41,24 @@
 
                     <x-slot name="content">
                         <x-dropdown-link :href="route('reservasi.list')">
-                                {{ __('Daftar Reservasi') }}
-                            </x-dropdown-link>
+                            {{ __('Daftar Reservasi') }}
+                        </x-dropdown-link>
+
+                        <x-dropdown-link :href="route('password.update')">
+                            {{ __('Reset Password') }}
+                        </x-dropdown-link>
+
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-
                             <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();">
+                                onclick="event.preventDefault();
+                        this.closest('form').submit();">
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>
+
                 </x-dropdown>
             </div>
 
@@ -95,7 +100,7 @@
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <x-responsive-nav-link :href="route('logout')"
-                            onclick="event.preventDefault();
+                        onclick="event.preventDefault();
                                         this.closest('form').submit();">
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>

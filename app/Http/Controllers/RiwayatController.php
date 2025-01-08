@@ -71,7 +71,6 @@ class RiwayatController extends Controller
 
         $riwayat -> id_reservasi = $reservasi_id;
         $riwayat -> id_dosen = Auth::guard('dosen')->user()->id;
-        $riwayat -> nama_riwayat = $request -> nama_riwayat;
         $riwayat -> pesan = $request -> pesan;
         $riwayat -> tanggal = Carbon::now()->format('m/d/Y');
         $riwayat -> save();
@@ -121,7 +120,6 @@ class RiwayatController extends Controller
     public function update(UpdateRiwayatRequest $request, $riwayat_id)
     {
         $riwayat = Riwayat::findOrFail($riwayat_id);
-        $riwayat -> nama_riwayat = $request -> name;
         $riwayat -> tanggal = $request -> date;
         $riwayat -> pesan = $request -> pesan;
         $riwayat -> save();

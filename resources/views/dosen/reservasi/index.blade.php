@@ -31,16 +31,20 @@
                                                     class="text-xl font-semibold text-gray-700 capitalize md:text-2xl dark:text-white group-hover:text-white">
                                                     {{ $reservasi->nama_awal . " " . $reservasi->nama_tengah . " " . $reservasi->nama_akhir }}</h1>
 
-                                                <p
+                                                <!-- <p
                                                     class="mt-2 text-gray-500 capitalize dark:text-gray-300 group-hover:text-white">
-                                                    {{ $reservasi->tanggal }} </p>
+                                                    {{ $reservasi->created_at }} </p> -->
+
+                                                    <p
+                                            class="mt-4 text-gray-500 capitalize dark:text-gray-300 group-hover:text-white">
+                                            {{ $reservasi->Keperluan }}</p>
 
                                             </div>
                                         </div>
 
-                                        <p
+                                        <!-- <p
                                             class="mt-4 text-gray-500 capitalize dark:text-gray-300 group-hover:text-white">
-                                            {{ $reservasi->pesan }}</p>
+                                            {{ $reservasi->Keperluan }}</p> -->
                                     </div>
                                 @endforeach
                             </div>

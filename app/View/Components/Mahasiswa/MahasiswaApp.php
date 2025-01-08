@@ -1,10 +1,10 @@
 <?php
 
-namespace App\View\Components\Pasien;
+namespace App\View\Components\Mahasiswa;
 
 use Illuminate\View\Component;
 
-class PasienTopbar extends Component
+class MahasiswaApp extends Component
 {
     /**
      * Create a new component instance.
@@ -23,6 +23,6 @@ class PasienTopbar extends Component
      */
     public function render()
     {
-        return view('components.pasien.pasien-topbar');
+        return view('components.mahasiswa.mahasiswa-app');
     }
 }
